@@ -133,6 +133,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/songs", "/login")
                         .permitAll()
+                        .requestMatchers("/", "/songs/edit/**", "/songs/add/**").hasRole("ADMIN")
                         .anyRequest()
                         .authenticated()
                 )
